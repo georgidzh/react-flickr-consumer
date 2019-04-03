@@ -13,7 +13,9 @@ git clone https://github.com/georgidzh/react-flickr-now.git
 ```
 
 Make a copy of `.env.example` in the root folder and rename it to `.env`
-replace "your-flickr-api-key" for "REACT_APP_FLICKR_API_KEY" with yours. You can get one on [Flickr](https://www.flickr.com/services/apps/create/apply)
+replace "your-flickr-api-key" for "REACT_APP_FLICKR_API_KEY" with yours. You can get one on [Flickr](https://www.flickr.com/services/apps/create/apply)<br>
+
+Make sure you have the SKIP_PREFLIGHT_CHECK=true in your .env file.
 
 Install the project dependencies:
 
