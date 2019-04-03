@@ -2,6 +2,9 @@
 
 SPA Web application built with ReactJS that consumes Flickr's photos API and allows saving posts in IndexedDB
 
+## Demo
+<https://flickr-now-demo.firebaseapp.com>
+
 ## Installation
 
 This guide assumes you have NodeJS and NPM installed on your machine
@@ -12,16 +15,16 @@ Clone the repository
 git clone https://github.com/georgidzh/react-flickr-now.git
 ```
 
-Make a copy of `.env.example` in the root folder and rename it to `.env`
-replace "your-flickr-api-key" for "REACT_APP_FLICKR_API_KEY" with yours. You can get one on [Flickr](https://www.flickr.com/services/apps/create/apply)<br>
-
-Make sure you have the SKIP_PREFLIGHT_CHECK=true in your .env file.
-
-Install the project dependencies:
-
 ```bash
 cd [project_root]
 ```
+
+Make a copy of `.env.example` in the root folder and rename it to `.env`
+Peplace "your-flickr-api-key" for "REACT_APP_FLICKR_API_KEY" with yours. You can get one on [Flickr](https://www.flickr.com/services/apps/create/apply)<br>
+
+!!! Make sure you have the SKIP_PREFLIGHT_CHECK=true in your .env file. (this is required because there is some custom linting setup, I don't like the one from create react app)
+
+Install the project dependencies:
 
 ```bash
 npm install
@@ -82,6 +85,7 @@ Flickr REST Service and the local database storage
 
 * Improve tests as the coverage is not full at the moment
 * Display loading images in the grid
+* Don't show IndexedDB save options if it is not supported. (There already is a check and is saved in the state)
 * Use src-sets on images to improve UX on small screens
 * Optimize performance
 * Limit the rendered results, currently it keeps everything in the DOM when scrolling
