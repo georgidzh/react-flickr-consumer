@@ -1,0 +1,23 @@
+.limited-tags {
+  min-height: 120px;
+  .text-block-container {
+    margin-bottom: 0;
+  }
+  &.limited {
+    height: 80px;
+  }
+  .tag {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 50%;
+  }
+}
+
+.tag {
+  text-overflow: hidden;
+  cursor: pointer;
+  &:hover {
+    background-color: #0062cc;
+  }
+}

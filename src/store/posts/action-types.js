@@ -1,0 +1,15 @@
+export const SET_IS_LOADING = 'SET_IS_LOADING';
+export const GET_POSTS_SUCCESS = 'GET_POSTS_SUCCESS';
+export const SET_SEARCH = 'SET_SEARCH';
+export const UPDATE_POSTS = 'UPDATE_POST';
+export const RESET_STATE = 'RESET_STATE';
+export const GET_POSTS_ERROR = 'GET_POSTS_ERROR';
+
+export default {
+  SET_IS_LOADING,
+  GET_POSTS_SUCCESS,
+  SET_SEARCH,
+  UPDATE_POSTS,
+  RESET_STATE,
+  GET_POSTS_ERROR,
+};

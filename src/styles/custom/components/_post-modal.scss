@@ -1,0 +1,20 @@
+#post-details-modal {
+  max-width: 70%;
+  .modal-body {
+    min-height: 70vh;
+  }
+  img {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    vertical-align: middle;
+    max-width: 100%;
+  }
+  .text-block-container {
+    overflow-wrap: break-word;
+  }
+}
+
+@media (max-width: 575.98px) { 
+  #post-details-modal {
+    max-width: 100%;
+  }
+}

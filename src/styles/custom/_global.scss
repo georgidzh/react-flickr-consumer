@@ -1,0 +1,35 @@
+#root {
+  padding-top: 56px;
+}
+
+.content-page {
+  min-height: 100vh;
+}
+
+.btn-text {
+  border: none;
+  background-color: transparent;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.text-block-container {
+  margin-bottom: 1rem;
+  h6 {
+    margin-bottom: 0.2rem;
+  }
+} 
+
+// .v-c-container {
+//   display: table;
+//   width: 100%;
+//   height: 100%;
+//   .v-c {
+//     display: table-cell;
+//     height: 100%;
+//     width: 100%;
+//     vertical-align: middle;
+//   }
+// }

@@ -1,0 +1,32 @@
+.post-card {
+  margin-bottom: 60px;
+  .card-img-top {
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    &.take-space {
+      padding: 0;
+      img {
+        height: auto;
+        width: 100%;
+        position: absolute;
+        top: -9999px;
+        bottom: -9999px;
+        left: -9999px;
+        right: -9999px;
+        margin: auto;
+      } 
+    }
+  }
+  .card-body {
+    min-height: 350px;
+    .text-block-container {
+      &.description {
+        min-height: 120px;
+      }
+    }
+  }
+}
