@@ -9,9 +9,9 @@ import {
   ERROR_MODAL_HIDE,
 } from './action-types';
 import { appSettings } from '../../utils/constants';
-import { arrayToObject } from '../../utils/helpers';
+import { keyObjects } from '../../utils/helpers';
 
-const defaultSettings = arrayToObject(Object.values(appSettings), 'key', 'defaultValue');
+const defaultSettings = keyObjects(Object.values(appSettings), 'key', 'defaultValue');
 
 export const initialState = {
   isInitialized: false,
@@ -25,7 +25,7 @@ export const initialState = {
 };
 
 const setUserSettings = (state, payload) => {
-  const settings = arrayToObject(payload, 'key', 'value');
+  const settings = keyObjects(payload, 'key', 'value');
   return {
     ...state,
     ...settings,

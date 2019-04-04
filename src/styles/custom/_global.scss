@@ -1,9 +1,10 @@
 #root {
   padding-top: 56px;
+  min-height: 100vh;
 }
 
-.content-page {
-  min-height: 100vh;
+.page-content {
+  padding-top: 40px;
 }
 
 .btn-text {
@@ -16,20 +17,9 @@
 }
 
 .text-block-container {
+  overflow: hidden;
   margin-bottom: 1rem;
   h6 {
     margin-bottom: 0.2rem;
   }
 } 
-
-// .v-c-container {
-//   display: table;
-//   width: 100%;
-//   height: 100%;
-//   .v-c {
-//     display: table-cell;
-//     height: 100%;
-//     width: 100%;
-//     vertical-align: middle;
-//   }
-// }

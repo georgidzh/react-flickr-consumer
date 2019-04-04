@@ -28,8 +28,10 @@ const PostModal = ({
     <Modal.Header closeButton>
       <Modal.Title id="post-details-modal-title">
         <h5 className={!post.title.length ? 'text-muted' : null}>
-          <span>Title: </span>
-          {post.title.length ? post.title : 'No Title' }
+          <span className="post-title">
+            <span className="mr-1">Title:</span>
+            {post.title.length ? post.title : 'No Title' }
+          </span>
         </h5>
       </Modal.Title>
     </Modal.Header>
@@ -40,6 +42,7 @@ const PostModal = ({
             <LoadingImg
               src={`${post.imgBaseUrl}${Post.modalImgUrlEnding}`}
               alt="Flickr post"
+              data-test="loading-image"
             />
           </Col>
           <Col xs={12} md={7}>
@@ -55,18 +58,18 @@ const PostModal = ({
                 {post.author}
               </a>
             </div>
-            <Description description={post.description} />
+            <Description description={post.description} data-test="description" />
             <div className="text-block-container">
               <h6>Published at:</h6>
-              <span>{moment.unix(post.publishedAt).format('dddd, MMMM Do YYYY, h:mm:ss a')}</span>
+              <span className="published-at">{moment.unix(post.publishedAt).format('dddd, MMMM Do YYYY, h:mm:ss a')}</span>
             </div>
             {post.createdAt && (
               <div className="text-block-container">
                 <h6>Saved at:</h6>
-                <span>{moment.unix(post.createdAt).format('dddd, MMMM Do YYYY, h:mm:ss a')}</span>
+                <span className="created-at">{moment.unix(post.createdAt).format('dddd, MMMM Do YYYY, h:mm:ss a')}</span>
               </div>
             )}
-            <Tags limit={false} tags={post.tags} searchHandler={searchHandler} />
+            <Tags data-test="tags" limit={false} tags={post.tags} searchHandler={searchHandler} />
           </Col>
         </Row>
       </Container>
@@ -78,9 +81,7 @@ PostModal.propTypes = {
   isVisible: PropTypes.bool.isRequired,
   hide: PropTypes.func.isRequired,
   searchHandler: PropTypes.func.isRequired,
-  post: PropTypes.shape({
-    title: PropTypes.string,
-  }).isRequired,
+  post: PropTypes.shape(Post.propTypesPostShape).isRequired,
 };
 
 export default PostModal;

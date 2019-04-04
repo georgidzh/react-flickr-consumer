@@ -4,7 +4,7 @@ import routes from './routes';
 import NotFoundRoute from './NotFoundRoute';
 
 const Routes = () => (
-  <React.Fragment>
+  <div className="page-content">
     <Switch>
       {routes.map(route => (
         <Route
@@ -17,7 +17,7 @@ const Routes = () => (
       <Redirect from="/" to="/recent" />
       <Route component={NotFoundRoute} />
     </Switch>
-  </React.Fragment>
+  </div>
 );
 
 export default Routes;

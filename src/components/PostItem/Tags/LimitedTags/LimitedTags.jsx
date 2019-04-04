@@ -22,7 +22,7 @@ class LimitedTags extends React.Component {
 
     if (tags.length <= limit) {
       return (
-        <div className="text-block-container limited-tags">
+        <div className="limited-tags">
           <Tags tags={tags} searchHandler={searchHandler} />
         </div>
       );
@@ -31,7 +31,7 @@ class LimitedTags extends React.Component {
     const shownTags = isExpanded ? tags : tags.slice(0, limit);
     const hiddenCount = tags.length - limit;
     return (
-      <div className={`text-block-container limited-tags ${!isExpanded ? 'limited' : null}`}>
+      <div className={`limited-tags ${!isExpanded ? 'limited' : null}`}>
         <Tags tags={shownTags} searchHandler={searchHandler} />
         <button onClick={this.toggle} className="btn-text" type="button">
           {isExpanded ? 'hide tags' : `${hiddenCount} more ${hiddenCount === 1 ? 'tag' : 'tags'}`}

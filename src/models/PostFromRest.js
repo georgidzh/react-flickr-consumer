@@ -12,7 +12,7 @@ export default class PostFromRest {
     this.link = PostFromRest.buildPostLink(data.owner, data.id);
     this.publishedAt = data.dateupload * 1;
     this.secret = data.secret;
-    this.tags = data.tags.split(' ');
+    this.tags = PostFromRest.transformTags(data.tags);
     this.title = data.title;
     this.isSaved = inArray(data.id, storedIds);
   }
@@ -41,5 +41,10 @@ export default class PostFromRest {
 
   static buildPostLink(authorId, flickrId) {
     return `https://www.flickr.com/photos/${authorId}/${flickrId}`;
+  }
+
+  static transformTags(tagsString) {
+    const tags = tagsString.split(' ');
+    return tags.filter(tag => tag.length);
   }
 }

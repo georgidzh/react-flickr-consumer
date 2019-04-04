@@ -23,9 +23,17 @@
   }
   .card-body {
     min-height: 350px;
-    .text-block-container {
-      &.description {
-        min-height: 120px;
+    .card-title {
+      overflow: hidden;
+      h5, h6 {
+        white-space: nowrap;
+      }
+    }
+    .description {
+      margin-bottom: 10px;
+      > div {
+        max-height: 4.5rem;
+        overflow: hidden;
       }
     }
   }

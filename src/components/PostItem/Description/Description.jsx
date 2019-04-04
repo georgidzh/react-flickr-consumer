@@ -5,7 +5,7 @@ import Dotdotdot from 'react-dotdotdot';
 function Description({ description, truncate }) {
   if (!description.length) {
     return (
-      <div className="text-block-container">
+      <div className="description">
         <h6>Description:</h6>
         <p className="text-muted">Not provided</p>
       </div>
@@ -13,7 +13,7 @@ function Description({ description, truncate }) {
   }
 
   return (
-    <div className="text-block-container">
+    <div className="description">
       <h6>Description:</h6>
       {truncate ? (
         <Dotdotdot clamp={3}>

@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Container } from 'react-bootstrap';
 import LazyLoad from 'vanilla-lazyload';
 import Post from '../../models/Post';
 import { scrollToTop } from '../../utils/helpers';
@@ -19,9 +18,13 @@ import {
 import PostsGrid from '../PostsGrid/PostsGrid';
 import PostModal from '../PostModal/PostModal';
 import Search from '../Search/Search';
-import { STORAGE_SERVICE } from '../../utils/constants';
 
-class PostsContainer extends React.Component {
+export class PostsContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.loadMorePosts = this.loadMorePosts.bind(this);
+  }
+
   componentDidMount() {
     scrollToTop();
     if (!document.lazyLoadInstance) {
@@ -48,7 +51,9 @@ class PostsContainer extends React.Component {
     this.props.resetHandler();
   }
 
-  loadMorePosts = () => {
+  shouldDisplaySearch = () => this.props.currentPage > 0 || !this.props.isLoadingPosts;
+
+  loadMorePosts() {
     const { getPostsHandler } = this.props;
     if (!this.props.isLoadingPosts) {
       getPostsHandler()
@@ -59,17 +64,6 @@ class PostsContainer extends React.Component {
         })
         .catch();
     }
-  }
-
-  isLoadingFirstPage = () => this.props.isLoadingPosts && this.props.currentPage === 0;
-
-  getDisplayString = () => {
-    const { service, searchString } = this.props;
-    if (service === STORAGE_SERVICE) {
-      return 'Saved posts';
-    }
-
-    return searchString || '';
   }
 
   render() {
@@ -92,39 +86,38 @@ class PostsContainer extends React.Component {
     } = this.props;
 
     const noPosts = !posts.length && !hasMorePosts ? (
-      <div className="py-5 bg-light content-page text-center">
-        <p>There are no posts</p>
-      </div>
+      <p className="no-posts text-center mt-5">There are no posts</p>
     ) : null;
 
     return (
-      <div className="py-5 bg-light content-page">
-        <Container fluid className="flickr-feed-page">
-          {!this.isLoadingFirstPage() && (
-            <Search
-              service={service}
-              totalPosts={totalPosts}
-              searchString={searchString}
-              searchType={searchType}
-              searchHandler={searchHandler}
-            />
-          )}
-          {noPosts || (
-            <PostsGrid
-              imageSuffix={Post.getSuffixForSize(imageSize)}
-              posts={posts}
-              showPostsInfo={showPostsInfo}
-              hasMorePosts={hasMorePosts}
-              loadMore={this.loadMorePosts}
-              showDetails={showDetailsHandler}
-              savePost={savePostHandler}
-              unsavePost={unsavePostHandler}
-              searchHandler={searchHandler}
-            />
-          )}
-        </Container>
-        {!!posts.length && detailsVisible && (
+      <div className="posts container-fluid">
+        {this.shouldDisplaySearch() && (
+          <Search
+            data-test="search"
+            service={service}
+            totalPosts={totalPosts}
+            searchString={searchString}
+            searchType={searchType}
+            searchHandler={searchHandler}
+          />
+        )}
+        {noPosts || (
+          <PostsGrid
+            data-test="grid"
+            imageSuffix={Post.getSuffixForSize(imageSize)}
+            posts={posts}
+            showPostsInfo={showPostsInfo}
+            hasMorePosts={hasMorePosts}
+            loadMore={this.loadMorePosts}
+            showDetails={showDetailsHandler}
+            savePost={savePostHandler}
+            unsavePost={unsavePostHandler}
+            searchHandler={searchHandler}
+          />
+        )}
+        {detailsVisible && (
           <PostModal
+            data-test="post-modal"
             searchHandler={searchHandler}
             isVisible={detailsVisible}
             hide={() => hideDetailsHandler()}

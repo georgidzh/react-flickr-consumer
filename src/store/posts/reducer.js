@@ -14,7 +14,7 @@ export const initialState = {
   posts: [],
   hasMorePosts: true,
   currentPage: 0,
-  postsPerPage: 50,
+  postsPerPage: 20,
   totalPosts: 0,
   searchString: '',
   searchType: SEARCH_TYPE_TEXT,
