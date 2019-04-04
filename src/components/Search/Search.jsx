@@ -86,17 +86,17 @@ class Search extends React.Component {
     const { searchString } = this.state;
     const { service, totalPosts } = this.props;
     const placeholder = text.placeholder[service];
-    const helperText = 'To search by tags only you can do it like this: "Tags: tag, another tag, ....";';
+    const helperText = 'Search by tags like this: "Tags: Plovdiv, Nature"';
     return (
       <div className="row mb-4 search">
-        <div className="col-md-8">
+        <div className="col-md-7">
           <h5 className="pt-1">
             <span className="mr-1">Displaying results for:</span>
             <span className="mr-1">{this.getTextForResults(service)}</span>
             <span>{`(Total: ${totalPosts})`}</span>
           </h5>
         </div>
-        <div className="col-md-4">
+        <div className="col-md-5">
           <form onSubmit={this.handleSubmitted} className="form-inline">
             <div className="input-group">
               <input
@@ -120,7 +120,7 @@ class Search extends React.Component {
                 </button>
               </div>
             </div>
-            <small className="text-muted">{helperText}</small>
+            <small className="pl-1 text-muted">{helperText}</small>
           </form>
         </div>
       </div>
