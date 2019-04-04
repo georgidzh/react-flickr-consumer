@@ -108,5 +108,3 @@ export const deleteAllPosts = () => (dispatch, getState) => {
       dispatch(setLoading(false));
     });
 };
-
-export const searchByTag = searchData => dispatch => dispatch(setSearch(searchData.tag));

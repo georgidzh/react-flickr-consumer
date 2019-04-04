@@ -8,9 +8,7 @@ import Image from './Image/Image';
 import Title from './Title/Title';
 import LimitedTags from './Tags/LimitedTags/LimitedTags';
 
-
-// eslint-disable-next-line prefer-arrow-callback
-const PostItemMemo = React.memo(function PostItem(props) {
+export function PostItem(props) {
   const {
     post,
     showDetails,
@@ -29,16 +27,14 @@ const PostItemMemo = React.memo(function PostItem(props) {
     title,
     tags,
   } = post;
-  // console.log('render post');
   const saveBtn = isSaved
-    ? <button onClick={() => unsave(post)} className="btn-text text-danger float-right" type="button">Unsave post</button>
-    : <button onClick={() => save(post)} className="btn-text float-right" type="button">Save post</button>;
-
+    ? <button onClick={() => unsave(post)} className="btn-text text-danger float-right unsave" type="button">Unsave post</button>
+    : <button onClick={() => save(post)} className="btn-text float-right save" type="button">Save post</button>;
   return (
     <div className="col-md-6 col-lg-3">
       <div className="card post-card shadow-sm">
         <div className={`card-img-top text-center ${imageSuffix === '_n.jpg' ? 'take-space' : null}`}>
-          <Image src={`${imgBaseUrl}${imageSuffix}`} alt={`Photo by ${post.author}`} />
+          <Image data-test="post-image" src={`${imgBaseUrl}${imageSuffix}`} alt={`Photo by ${post.author}`} />
         </div>
         { showPostsInfo && (
           <div className="card-body">
@@ -47,9 +43,10 @@ const PostItemMemo = React.memo(function PostItem(props) {
               link={post.link}
               author={author}
               authorLink={authorLink}
+              data-test="post-title"
             />
-            <Description description={description} truncate />
-            <LimitedTags searchHandler={searchHandler} tags={tags} />
+            <Description description={description} truncate data-test="post-description" />
+            <LimitedTags searchHandler={searchHandler} tags={tags} data-test="post-tags-limited" />
           </div>
         )}
         <div className="card-footer">
@@ -59,9 +56,9 @@ const PostItemMemo = React.memo(function PostItem(props) {
       </div>
     </div>
   );
-});
+}
 
-PostItemMemo.propTypes = {
+PostItem.propTypes = {
   isSaved: PropTypes.bool.isRequired,
   showPostsInfo: PropTypes.bool.isRequired,
   imageSuffix: PropTypes.string.isRequired,
@@ -72,4 +69,4 @@ PostItemMemo.propTypes = {
   post: PropTypes.shape(Post.propTypesPostShape).isRequired,
 };
 
-export default PostItemMemo;
+export default React.memo(PostItem);
