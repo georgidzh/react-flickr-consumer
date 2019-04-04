@@ -74,7 +74,7 @@ Flickr REST Service and the local database storage
 * Async store actions with [Redux thunk](https://github.com/reduxjs/redux-thunk)
 * Full text search for IndexedDB (locally is limited)
 * Routing with [React Router](https://reacttraining.com/react-router/)
-* Linting folowing the [airbnb](https://github.com/airbnb/javascript) standard
+* Following the [airbnb](https://github.com/airbnb/javascript) code style standard
 * [Bootstrap 4](https://getbootstrap.com/docs/4.3/getting-started/introduction/) CSS framework
 * Unit test with Jest and Enzyme ( not everything is covered ). PropTypes for all components
 * Polyfills for old browsers as Internet Explored, Some of the features of IndexedDB are not used because of browser support, and the full text search doesn't use some of the features of the NoSQL database. For example the multi-entry index is not used and new mapping table is created.
