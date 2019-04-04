@@ -65,7 +65,7 @@ All available build tasks are defined in `package.json`.
 * Memoization of the photos component in the grid to prevent re-render and potential memory increases.
 * Infinite scroll to load more images into the grid.
 * Lazy loading the images in the grid to improve page load and improve UX
-* A modal window with more information about the photo and full description and photo, since they are not displayed in the grid if the description is not too long or the image format doesn't fit the design
+* A modal window with more information about the photo, full description and full sized photo because the full text and the full sized image are not displayed in the grid in order to follow the design.
 * Options for customizing the UI by changing the image format/size and hiding the information in the card
 * Store photos locally in the browsers' IndexedDB NoSql database, allowing later use and not loosing the images the user liked. A Wrapper around IndexedDB based on promises is used - [Dexie](https://dexie.org/)
 * One container to rule them all :) The same container is responsible and exposes the same functionalities for both the
