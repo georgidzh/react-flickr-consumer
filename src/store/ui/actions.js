@@ -13,7 +13,6 @@ import {
 import PostsStorage from '../../services/storage/PostsStorage';
 import SettingsStorage from '../../services/storage/SettingsStorage';
 import { appSettings, IMAGE_SMALL, IMAGE_SQUARE } from '../../utils/constants';
-import { findOrCreateAsyncSetting } from '../../utils/helpers';
 
 export const setIsInitialized = val => ({ type: SET_IS_INITIALIZED, payload: val });
 export const setIndexedDbSupported = val => ({ type: SET_INDEXED_DB_SUPPORTED, payload: val });
@@ -65,7 +64,7 @@ export const initialize = () => async (dispatch) => {
     dispatch(setIndexedDbSupported(true));
     const postsCount = await PostsStorage.countAll();
     dispatch(setSavedPostsCount(postsCount));
-    const settings = await findOrCreateAsyncSetting(appSettings);
+    const settings = await SettingsStorage.findOrCreateMany(appSettings);
     dispatch(setSettings(settings));
     dispatch(setIsInitialized(true));
   }

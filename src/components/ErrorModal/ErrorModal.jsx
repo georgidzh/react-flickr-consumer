@@ -4,8 +4,7 @@ import { Modal } from 'react-bootstrap';
 import Emoji from '../Emoji/Emoji';
 
 function ErrorModal(props) {
-  const { isOpen, data, closeHandler } = props;
-  const { message } = data;
+  const { isOpen, errorMessage, closeHandler } = props;
 
   return (
     <Modal
@@ -18,22 +17,24 @@ function ErrorModal(props) {
     >
       <Modal.Header closeButton onHide={closeHandler}>
         <Modal.Title id="error-modal">
-          <Emoji symbol="🤫" />
+          <Emoji icon="🤫" />
           <span>Ooops...</span>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p>{message}</p>
+        <p>{errorMessage}</p>
       </Modal.Body>
     </Modal>
   );
 }
 
+ErrorModal.defaultProps = {
+  errorMessage: 'Something went wrong',
+};
+
 ErrorModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  data: PropTypes.shape({
-    message: PropTypes.string.isRequired,
-  }).isRequired,
+  errorMessage: PropTypes.string,
   closeHandler: PropTypes.func.isRequired,
 };
 

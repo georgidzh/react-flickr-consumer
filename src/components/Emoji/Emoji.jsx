@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-const Emoji = ({ symbol, label, ...rest }) => (
+const Emoji = ({ icon, label, ...rest }) => (
   <span
     className="emoji"
     role="img"
@@ -9,7 +9,7 @@ const Emoji = ({ symbol, label, ...rest }) => (
     aria-hidden={label ? 'false' : 'true'}
     {...rest}
   >
-    {symbol}
+    {icon}
   </span>
 );
 

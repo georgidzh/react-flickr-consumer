@@ -5,7 +5,7 @@ import Tag from './Tag/Tag';
 
 function Tags({ tags, searchHandler }) {
   return (
-    <div className="text-block-container">
+    <div className="tags">
       <h6>Tags:&nbsp;</h6>
       {tags.length
         ? tags.map(tag => <Tag key={tag} tag={tag} clickHandler={searchHandler} />)

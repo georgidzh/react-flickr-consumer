@@ -1,7 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'react-bootstrap';
 import { SEARCH_TYPE_TEXT, SEARCH_TYPE_TAGS } from '../../utils/constants';
 import { search as text } from '../../utils/text';
 
@@ -89,15 +88,15 @@ class Search extends React.Component {
     const placeholder = text.placeholder[service];
     const helperText = 'To search by tags only you can do it like this: "Tags: tag, another tag, ....";';
     return (
-      <Row className="mb-4 search-container">
-        <Col md={8}>
+      <div className="row mb-4 search">
+        <div className="col-md-8">
           <h5 className="pt-1">
             <span className="mr-1">Displaying results for:</span>
             <span className="mr-1">{this.getTextForResults(service)}</span>
             <span>{`(Total: ${totalPosts})`}</span>
           </h5>
-        </Col>
-        <Col md={{ span: 4 }}>
+        </div>
+        <div className="col-md-4">
           <form onSubmit={this.handleSubmitted} className="form-inline">
             <div className="input-group">
               <input
@@ -123,8 +122,8 @@ class Search extends React.Component {
             </div>
             <small className="text-muted">{helperText}</small>
           </form>
-        </Col>
-      </Row>
+        </div>
+      </div>
     );
   }
 }

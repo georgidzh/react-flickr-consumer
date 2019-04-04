@@ -6,23 +6,23 @@ const Title = (props) => {
   const {
     title,
     link,
-    username,
+    author,
     authorLink,
   } = props;
 
   return (
     <div className="card-title">
       <h5 title={title}>
-        <a href={link} target="_blank" rel="noopener noreferrer">
-          <Dotdotdot tagName="span" clamp={1}>
+        <Dotdotdot tagName="span" clamp={1}>
+          <a href={link} target="_blank" rel="noopener noreferrer">
             {title.length ? title : 'No title'}
-          </Dotdotdot>
-        </a>
+          </a>
+        </Dotdotdot>
       </h5>
       <h6>
         <Dotdotdot tagName="span" clamp={1}>
           by&nbsp;
-          <a href={authorLink} target="_blank" rel="noopener noreferrer">{username}</a>
+          <a href={authorLink} target="_blank" rel="noopener noreferrer">{author}</a>
         </Dotdotdot>
       </h6>
     </div>
@@ -32,7 +32,7 @@ const Title = (props) => {
 Title.propTypes = {
   title: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
   authorLink: PropTypes.string.isRequired,
 };
 

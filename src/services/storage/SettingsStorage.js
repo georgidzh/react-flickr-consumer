@@ -21,6 +21,14 @@ class SettingsStorage {
     }
     return storedSetting;
   }
+
+  static async findOrCreateMany(settings) {
+    const results = Object.values(settings).map(async (item) => {
+      const setting = await SettingsStorage.findOrCreate(item);
+      return setting;
+    });
+    return Promise.all(results);
+  }
 }
 
 export default SettingsStorage;

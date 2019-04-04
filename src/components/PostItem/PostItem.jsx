@@ -45,7 +45,7 @@ const PostItemMemo = React.memo(function PostItem(props) {
             <Title
               title={title}
               link={post.link}
-              username={author}
+              author={author}
               authorLink={authorLink}
             />
             <Description description={description} truncate />

@@ -62,7 +62,7 @@ export default class Post {
     imgBaseUrl: PropTypes.string.isRequired,
     isSaved: PropTypes.bool.isRequired,
     publishedAt: PropTypes.number.isRequired,
-    secret: PropTypes.string.isRequired,
+    // secret: PropTypes.string.isRequired,
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
     title: PropTypes.string.isRequired,
   };

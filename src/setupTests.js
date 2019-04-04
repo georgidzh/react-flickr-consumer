@@ -9,6 +9,8 @@ expect.addSnapshotSerializer(createSerializer({ mode: 'deep' }));
 
 Enzyme.configure({ adapter: new EnzymeAdapter() });
 
+global.debugg = wrapper => console.log(wrapper.debug());
+
 // global.React = React;
 // global.shallow = shallow;
 // global.render = render;

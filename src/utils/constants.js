@@ -9,6 +9,10 @@ export const locationForServiceMap = {
   [STORAGE_SERVICE]: '/saved',
 };
 
+// Messages
+export const CONFIRM_MSG_DELETE_POSTS = 'All saved posts are going to be permanently removed from the browser storage? Are you sure about this?';
+export const CONFIRM_MSG_RESIZE_IMAGES = 'This will cause the page to reload. Are you sure?';
+
 // Settings
 export const IMAGE_SIZE_KEY = 'imageSize';
 export const IMAGE_SMALL = 'small';

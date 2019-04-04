@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Modal, Button } from 'react-bootstrap';
-import Emoji from '../../Emoji/Emoji';
+import Emoji from '../Emoji/Emoji';
 
+// The component is tested in the AppNavbar tests
 class Confirm extends React.Component {
   constructor(props) {
     super(props);
@@ -41,26 +42,31 @@ class Confirm extends React.Component {
   }
 
   render() {
-    const { children, title, text } = this.props;
+    const {
+      children,
+      title,
+      text,
+      className,
+    } = this.props;
     const { isOpen } = this.state;
 
     return (
       <React.Fragment>
         {children(this.handleShow)}
         {isOpen && (
-          <Modal show={isOpen} onHide={this.handleClose}>
+          <Modal show={isOpen} onHide={this.handleClose} className={`${className}-dialog`}>
             <Modal.Header closeButton>
               <Modal.Title>
-                <Emoji symbol="🤔" />
+                <Emoji icon="🤔" />
                 {title}
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>{text}</Modal.Body>
             <Modal.Footer>
-              <Button variant="secondary" onClick={this.handleClose}>
+              <Button variant="secondary" className={`cancel-${className}-btn`} onClick={this.handleClose}>
                 Cancel
               </Button>
-              <Button variant="primary" onClick={this.handleConfirm}>
+              <Button variant="primary" className={`${className}-btn`} onClick={this.handleConfirm}>
                 Yes
               </Button>
             </Modal.Footer>
@@ -72,11 +78,13 @@ class Confirm extends React.Component {
 }
 
 Confirm.defaultProps = {
+  className: 'confirm-dialog',
   title: 'Confirm',
   text: 'Are you sure about this?',
 };
 
 Confirm.propTypes = {
+  className: PropTypes.string,
   children: PropTypes.func.isRequired,
   title: PropTypes.string,
   text: PropTypes.string,

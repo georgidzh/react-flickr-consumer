@@ -37,6 +37,7 @@ const PostsGridMemo = React.memo(function PostsGrid(props) {
       showDetails={showDetails}
       post={post}
       searchHandler={searchHandler}
+      data-test="post-item"
     />
   ));
 
@@ -47,6 +48,7 @@ const PostsGridMemo = React.memo(function PostsGrid(props) {
       hasMore={hasMorePosts}
       loader={loader}
       threshold={1000}
+      className="grid"
     >
       <div className="row">
         {renderPosts}

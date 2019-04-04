@@ -10,7 +10,7 @@ import ErrorModal from '../ErrorModal/ErrorModal';
 import { initialize, hideErrorModal } from '../../store/ui/actions';
 
 
-class App extends React.Component {
+export class App extends React.Component {
   componentDidMount() {
     // eslint-disable-next-line react/destructuring-assignment
     this.props.initialize();
@@ -23,7 +23,6 @@ class App extends React.Component {
       errorModalData,
       closeErrorModalHandler,
     } = this.props;
-
     if (!isInitialized) {
       return (
         <div className="loading-screen">
@@ -35,17 +34,18 @@ class App extends React.Component {
     }
 
     return (
-      <>
-        <AppNavbar />
-        <AppRoutes />
+      <div className="app">
+        <AppNavbar data-test="app-navbar" />
+        <AppRoutes data-test="app-routes" />
         {errorModalVisible && (
           <ErrorModal
+            data-test="error-modal"
             isOpen={errorModalVisible}
-            data={errorModalData}
+            errorData={errorModalData ? errorModalData.message : null}
             closeHandler={closeErrorModalHandler}
           />
         )}
-      </>
+      </div>
     );
   }
 }
