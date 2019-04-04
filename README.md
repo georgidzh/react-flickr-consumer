@@ -78,7 +78,7 @@ Flickr REST Service and the local database storage
 * [Bootstrap 4](https://getbootstrap.com/docs/4.3/getting-started/introduction/) CSS framework
 * Unit test with Jest and Enzyme ( not everything is covered ). PropTypes for all components
 * Polyfills for old browsers as Internet Explored, Some of the features of IndexedDB are not used because of browser support, and the full text search doesn't use some of the features of the NoSQL database. For example the multi-entry index is not used and new mapping table is created.
-* Safe Content enabled, but unfortunately the public feed doesn't apply that filter. And on the other hand the users are not marking them as SAFE when they upload them
+* Safe Content enabled, but unfortunately the public feed doesn't apply that filter. And on the other hand the users are not tagging them as SAFE when they upload them
 
 ... and more
 
