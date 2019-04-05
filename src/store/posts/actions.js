@@ -83,6 +83,7 @@ export const getPosts = service => (dispatch, getState) => (
       })
       .catch((error) => {
         dispatch(getPostsError());
+        // eslint-disable-next-line no-console
         console.log(error);
         dispatch(showErrorModal({
           message: 'Something went wrong while getting posts. Try later...',

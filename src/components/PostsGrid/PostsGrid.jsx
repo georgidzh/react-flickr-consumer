@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import InfiniteScroll from 'react-infinite-scroller';
 import { Spinner } from 'react-bootstrap';
 
+// eslint-disable-next-line import/no-named-as-default
 import PostItem from '../PostItem/PostItem';
 
 // eslint-disable-next-line prefer-arrow-callback
