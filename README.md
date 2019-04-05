@@ -12,7 +12,7 @@ This guide assumes you have NodeJS and NPM installed on your machine
 Clone the repository
 
 ```bash
-git clone https://github.com/georgidzh/react-flickr-now.git
+git clone https://github.com/georgidzh/react-flickr-consumer
 ```
 
 ```bash
@@ -65,7 +65,7 @@ All available build tasks are defined in `package.json`.
 * Memoization of the photos component in the grid to prevent re-render and potential memory increases.
 * Infinite scroll to load more images into the grid.
 * Lazy loading the images in the grid to improve page load and improve UX
-* A modal window with more information about the photo and full description and photo, since they are not displayed in the grid if the description is not too long or the image format doesn't fit the design
+* A modal window with more information about the photo, full description and full sized photo because the full text and the full sized image are not displayed in the grid in order to follow the design.
 * Options for customizing the UI by changing the image format/size and hiding the information in the card
 * Store photos locally in the browsers' IndexedDB NoSql database, allowing later use and not loosing the images the user liked. A Wrapper around IndexedDB based on promises is used - [Dexie](https://dexie.org/)
 * One container to rule them all :) The same container is responsible and exposes the same functionalities for both the
@@ -78,7 +78,7 @@ Flickr REST Service and the local database storage
 * [Bootstrap 4](https://getbootstrap.com/docs/4.3/getting-started/introduction/) CSS framework
 * Unit test with Jest and Enzyme ( not everything is covered ). PropTypes for all components
 * Polyfills for old browsers as Internet Explored, Some of the features of IndexedDB are not used because of browser support, and the full text search doesn't use some of the features of the NoSQL database. For example the multi-entry index is not used and new mapping table is created.
-* Safe Content enabled, but unfortunately the public feed doesn't apply that filter. And on the other hand the users are not marking them as SAFE when they upload them
+* Safe Content enabled, but unfortunately the public feed doesn't apply that filter. And on the other hand the users are not tagging them as SAFE when they upload them
 
 ... and more
 
