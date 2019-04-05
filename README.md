@@ -12,7 +12,7 @@ This guide assumes you have NodeJS and NPM installed on your machine
 Clone the repository
 
 ```bash
-git clone https://github.com/georgidzh/react-flickr-now.git
+git clone https://github.com/georgidzh/react-flickr-consumer
 ```
 
 ```bash
