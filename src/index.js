@@ -1,4 +1,5 @@
 import 'react-app-polyfill/ie9';
+import 'es7-object-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
