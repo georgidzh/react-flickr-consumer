@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Spinner } from 'react-bootstrap';
 
+// eslint-disable-next-line import/no-named-as-default
 import AppNavbar from '../AppNavbar/AppNavbar';
 import AppRoutes from '../routes/AppRoutes';
 import ErrorModal from '../ErrorModal/ErrorModal';

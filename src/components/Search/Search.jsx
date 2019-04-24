@@ -7,12 +7,14 @@ import { search as text } from '../../utils/text';
 class Search extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.defaultState = {
       searchString: '',
-      searchType: SEARCH_TYPE_TEXT,
       stringFromProps: '',
     };
+    this.state = this.defaultState;
     this.textInput = React.createRef();
+    this.handleCleared = this.handleCleared.bind(this);
+    this.handleSubmitted = this.handleSubmitted.bind(this);
   }
 
   componentDidMount() {
@@ -26,7 +28,6 @@ class Search extends React.Component {
       this.setState({
         searchString: string,
         stringFromProps: this.props.searchString,
-        searchType: this.props.searchType,
       });
     }
   }
@@ -49,17 +50,31 @@ class Search extends React.Component {
     return null;
   }
 
-  handleCleared = () => {
-    this.setState({ searchString: '' }, () => {
-      this.props.searchHandler(this.state);
-    });
+  getTextForResults = (service) => {
+    const { searchString, searchType } = this.props;
+    if (searchString === '') {
+      return text.defaultResult[service];
+    }
+
+    return searchType === SEARCH_TYPE_TAGS
+      ? `Tags: "${searchString}"`
+      : searchString;
   };
 
-  handleSubmitted = (e) => {
+  handleCleared() {
+    this.setState(this.defaultState, () => {
+      this.props.searchHandler({
+        searchString: '',
+        searchType: SEARCH_TYPE_TEXT,
+      });
+    });
+  }
+
+  handleSubmitted(e) {
+    e.preventDefault();
     let { searchString } = this.state;
     let searchType;
     searchString = searchString.trim().toLowerCase();
-    e.preventDefault();
     if (searchString.startsWith('tags:')) {
       searchString = searchString.replace('tags:', '').trim();
       searchType = SEARCH_TYPE_TAGS;
@@ -69,34 +84,23 @@ class Search extends React.Component {
       searchType = SEARCH_TYPE_TEXT;
     }
     this.props.searchHandler({ searchString, searchType });
-  };
-
-  getTextForResults = (service) => {
-    const { searchString, searchType } = this.props;
-    if (searchString === '') {
-      return text.defaultResult[service];
-    }
-
-    return searchType === SEARCH_TYPE_TAGS
-      ? `Tags "${searchString}"`
-      : searchString;
-  };
+  }
 
   render() {
     const { searchString } = this.state;
     const { service, totalPosts } = this.props;
     const placeholder = text.placeholder[service];
-    const helperText = 'To search by tags only you can do it like this: "Tags: tag, another tag, ....";';
+    const helperText = 'Search by tags like this: "Tags: Plovdiv, Nature"';
     return (
       <div className="row mb-4 search">
-        <div className="col-md-8">
+        <div className="col-md-7">
           <h5 className="pt-1">
             <span className="mr-1">Displaying results for:</span>
-            <span className="mr-1">{this.getTextForResults(service)}</span>
+            <span className="mr-1 search-info">{this.getTextForResults(service)}</span>
             <span>{`(Total: ${totalPosts})`}</span>
           </h5>
         </div>
-        <div className="col-md-4">
+        <div className="col-md-5">
           <form onSubmit={this.handleSubmitted} className="form-inline">
             <div className="input-group">
               <input
@@ -120,7 +124,7 @@ class Search extends React.Component {
                 </button>
               </div>
             </div>
-            <small className="text-muted">{helperText}</small>
+            <small className="pl-1 text-muted">{helperText}</small>
           </form>
         </div>
       </div>

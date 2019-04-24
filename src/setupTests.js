@@ -9,6 +9,7 @@ expect.addSnapshotSerializer(createSerializer({ mode: 'deep' }));
 
 Enzyme.configure({ adapter: new EnzymeAdapter() });
 
+// eslint-disable-next-line no-console
 global.dd = wrapper => console.log(wrapper.debug());
 
 // global.React = React;
